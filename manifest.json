@@ -15,14 +15,18 @@
   
   "background": {
     "scripts" : ["background.js"],
-    "persistent": false
+    "persistent": true
   },
 
   "permissions" : [
-    "tabs"
+    "tabs",
+    "webRequest",
+    "*://*.google.com/",
+    "webRequestBlocking"
     ]
   //"storage": {
   //  "managed_schema": "schema.json"
   //}
  // "update_url": "http://path/to/updateInfo.xml",
+ //Mich why did you set persistent to false?
 }
