@@ -1,7 +1,5 @@
 // React when a browser action's icon is clicked.
 
-  // alert  ("In background");
-
 // chrome.browserAction.onClicked.addListener(function(tab) {
 //   var viewTabUrl = chrome.extension.getURL('popup.html');
 //   var imageUrl = "icon.png";
