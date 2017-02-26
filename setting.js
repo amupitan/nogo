@@ -1,58 +1,88 @@
-/*function nogo() {
-    var blocked = 
-		{website: document.getElementById("web").value,
-		 days:[],
-		 times:[],
-		};
-	blocked.times[0] = document.getElementById("starting").value;
-	blocked.times[1] = document.getElementById("ending").value;
+function milTime() {
+    var num1 = document.getElementById("starting").value;
+	var num2 = document.getElementById("ending").value;
+
+    if (num1 > num2) {
+		document.getElementById("starting").value = "";
+		document.getElementById("ending").value = "";
+		return true;
+    } 
+	else {
+        
+    }
+}
+
+function addWeb(web){
+	//var a = document.getElementById("web").value;
+	//web = new Array(7);
+	var t = [];
+	t[0] = document.getElementById("starting").value;
+	t[1] = document.getElementById("ending").value;
 	var tags = document.getElementsByName("check");
-	var j=0;
 	for(var i = 0; i < tags.length; ++i)
 	{
 		if(tags[i].checked){
-			blocked.days[j] = tags[i].id;
-			++j;
+			web[parseInt(tags[i].id)] = [];
+			web[parseInt(tags[i].id)].push(t);
 		}
-	}
-	return blocked;
-}*/
-//document.addEventListener('DOMContentLoaded', function(event)				{(document.getElementById("add").onclick(function(){
-//										 let dd = new doIt();
-//										  }))})
-class doIt{
-	constructor(){
-		this.websites = [];
-		this.times = [];
-		this.days = [];	
-	}
-	
-	nogo() {
-		console.log("hi");
-		this.websites.push(document.getElementById("web").value);
-		var d = [];
-		var t = [];
-			
-		t[0] = document.getElementById("starting").value;
-		t[1] = document.getElementById("ending").value;
-		var tags = document.getElementsByName("check");
-		var j=0;
-		for(var i = 0; i < tags.length; ++i)
-		{
-			if(tags[i].checked){
-				d[j] = tags[i].id;
-				++j;
-			}
-		}
-		this.times.push(t);
-		this.days.push(d);
-		console.log(this.times[0]);
-		console.log(this.times[1]);
 	}
 }
-var dd = new doIt();
 
-let a = document.getElementById("add");
-a.onclick=(function(){
-	return dd.nogo();
-})
+function editWeb(web){
+	var t = [];
+	t[0] = document.getElementById("starting").value;
+	t[1] = document.getElementById("ending").value;
+	var tags = document.getElementsByName("check");
+	for(var i = 0; i < tags.length; ++i)
+	{
+		if(tags[i].checked){
+			web[parseInt(tags[i].id)].push(t);
+		}
+	}
+	
+	
+}
+
+window.onload = () => {
+	var webName = document.getElementById("web").value;
+	let a = document.getElementById("add");
+	var site;
+	var cro = chrome.storage.sync.get("info",function(){
+			} );
+	if (cro == null) {
+		site = {};
+	}
+	else{
+		var stor = chrome.storage.sync.get("info",function(){
+			} );
+		site = JSON.parse(stor);
+	}
+	
+	a.onclick=(function(){
+		if(milTime()){
+			return;
+		}
+		var b = document.getElementById("web").value;
+		if(site[b] == null){
+			site[b] = [ [], [], [], [], [], [], [] ];
+			for(var c = 0; c < 7; ++c){
+				
+			}
+			addWeb(site[b]);
+			console.log(site);
+//			console.log(site[b][0]);
+		}	
+		else{
+			
+			editWeb(site[b]);
+			console.log(site);
+		}
+		var final 
+		var x = JSON.stringify(site);
+		//console.log(x);
+		chrome.storage.sync.set({'info': x});
+	});
+	
+}
+
+

@@ -11,30 +11,30 @@ document.addEventListener('DOMContentLoaded', function() {
   // var week = [];
   
   var body = document.getElementById('body');
-  // let m = document.getElementById('status');
-  // let select = document.createElement('select');
-  // m.appendChild(select);
+   let m = document.getElementById('status');
+   let select = document.createElement('select');
+   m.appendChild(select);
   
-  // let days = ["",
-  //       "Sunday",
-  //       "Monday",
-  //       "Tuesday",
-  //       "Wednesday",
-  //       "Thursday",
-  //       "Friday",
-  //       "Saturday"
-  //       ];
-  // for(let i = 0; i < 7; i++){
-  //   let op = new Option(days[i]);
-  //   if(i===0){
-  //     op.setAttribute('id', 'default');
-  //   }
-  //   select.appendChild(op);
-  // }
+   let days = ["",
+         "Sunday",
+         "Monday",
+         "Tuesday",
+         "Wednesday",
+         "Thursday",
+         "Friday",
+         "Saturday"
+         ];
+   for(let i = 0; i < 7; i++){
+     let op = new Option(days[i]);
+     if(i===0){
+       op.setAttribute('id', 'default');
+     }
+     select.appendChild(op);
+   }
   
-  // let i = document.createElement('input');
-  // i.setAttribute('placeholder', "website");
-  // body.appendChild(i);
+   let i = document.createElement('input');
+   i.setAttribute('placeholder', "website");
+   m.appendChild(i);
   
   
   // //TODO add a time picker. Looked online a little but had a little difficulty
@@ -47,21 +47,21 @@ document.addEventListener('DOMContentLoaded', function() {
   // var tr = document.createElement('tr');
   // tbl.appendChild(tbdy);
   // body.appendChild(tbl);
-  
-  // var b = document.createElement('button');
-  // b.setAttribute('class', 'btn');
-  // b.onclick = function() {
-  //   if(i.value !== null){
-  //     websites.push(i.value);
-  //     i.value("");
-  //   }
+
+   var b = document.createElement('button');
+   b.setAttribute('class', 'btn');
+   b.onclick = function() {
+     if(i.value !== null){
+       websites.push(i.value);
+       i.value("");
+     }
     
-  //   if(select.value !== null){
-  //     week.push(select.value);
-  //   }
-  // };
-  // b.innerHTML = "Add";
-  // m.appendChild(b);
+     if(select.value !== null){
+       week.push(select.value);
+     }
+   };
+   b.innerHTML = "Add";
+   m.appendChild(b);
       
   
   // var setting = document.createElement('button');
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var newURL = "setting.html";
     chrome.tabs.create({ url: newURL });
   };
-  body.appendChild(settin);
+  m.appendChild(settin);
   
   // chrome.browserAction.onClicked.addListener(function(activeTab)
   // {
