@@ -1,3 +1,5 @@
+
+
 function milTime() {
     var num1 = document.getElementById("starting").value;
 	var num2 = document.getElementById("ending").value;
@@ -78,6 +80,7 @@ window.onload = () => {
 		}
 		chrome.storage.sync.set({'info': site});
 		document.getElementById('message').innerHTML = `The page: ${b} has been added to the block list`;
+
 	});
 	
 };
