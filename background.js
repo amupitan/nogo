@@ -1,30 +1,38 @@
-var websites = {
-  "facebook.com" : [
-    [['2:00','5:00'], ['11:00','12:00']],
-    [['3:00','4:00'], ['11:00','12:00']],
-    ]
-  ,
-  "twitter.com" : [
-    [['2:00','4:00'], ['11:00','12:00']],
-    [['3:00','4:00'], ['11:00','12:00']]
-  ]
-};
+// var websites = {
+//   "facebook.com" : [
+//     [['2:00','8:00'], ['11:00','12:00']],
+//     [['3:00','4:00'], ['11:00','12:00']],
+//     ]
+//   ,
+//   "twitter.com" : [
+//     [['2:00','4:00'], ['11:00','12:00']],
+//     [['3:00','4:00'], ['11:00','12:00']]
+//   ]
+// };
+
+var websites = {};
+var websiteNames = [];
+chrome.storage.sync.get("info",function(obj){
+  console.log(obj);
+  if (obj.info)
+    websites = obj.info;
+  websiteNames = [...Object.getOwnPropertyNames(websites)].map((url) => {
+          return urlMaker(url);
+  });
+			} );
 
 let urlMaker = url => {return `*://*.${url}/*`};
-var websiteNames = [...Object.getOwnPropertyNames(websites)].map((url) => {
-  return urlMaker(url);
-});
+
 
 var hostGetter = url => {
   let fullhost = new URL(url).origin;
   return fullhost.substring(fullhost.substring(0, fullhost.lastIndexOf('.')).lastIndexOf('.') + 1);
 };
 
-// var websites = localStorage.getItem('infpo');
-
 var info = JSON.parse(localStorage.getItem('info'));
 chrome.webRequest.onBeforeRequest.addListener(
   (details) => {
+        
         let date = new Date();
         for(let val of websites[hostGetter(details.url)][date.getDay()]){
           let startTime = parseInt(val[0].split(':').join(''));

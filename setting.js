@@ -6,7 +6,7 @@ function milTime() {
 		document.getElementById("starting").value = "";
 		document.getElementById("ending").value = "";
 		return true;
-    } 
+    }
 	else {
         
     }
@@ -43,46 +43,43 @@ function editWeb(web){
 	
 }
 
+let urlMaker = url => {return `*://*.${url}/*`};
+
+var hostGetter = url => {
+  let fullhost = new URL(url).origin;
+  return fullhost.substring(fullhost.substring(0, fullhost.lastIndexOf('.')).lastIndexOf('.') + 1);
+};
+
 window.onload = () => {
 	var webName = document.getElementById("web").value;
 	let a = document.getElementById("add");
-	var site;
-	var cro = chrome.storage.sync.get("info",function(){
-			} );
-	if (cro == null) {
-		site = {};
-	}
-	else{
-		var stor = chrome.storage.sync.get("info",function(){
-			} );
-		site = JSON.parse(stor);
-	}
+	var site = {};
+	chrome.storage.sync.get("info",function(obj){
+	  console.log(obj);
+	  if (obj.info)
+      site = obj.info;
+    if (site === null) site = {};
+		} );
 	
 	a.onclick=(function(){
 		if(milTime()){
 			return;
 		}
 		var b = document.getElementById("web").value;
-		if(site[b] == null){
+		if(site[b] === undefined){
 			site[b] = [ [], [], [], [], [], [], [] ];
-			for(var c = 0; c < 7; ++c){
-				
-			}
 			addWeb(site[b]);
 			console.log(site);
-//			console.log(site[b][0]);
-		}	
+		}
 		else{
 			
 			editWeb(site[b]);
 			console.log(site);
 		}
-		var final 
-		var x = JSON.stringify(site);
-		//console.log(x);
-		chrome.storage.sync.set({'info': x});
+		chrome.storage.sync.set({'info': site});
+		document.getElementById('message').innerHTML = `The page: ${b} has been added to the block list`;
 	});
 	
-}
+};
 
 

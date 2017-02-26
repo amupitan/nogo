@@ -2,7 +2,59 @@
 <html>
   <head>
     <title>Settings</title>
-	  
+	  <style>
+	#subtitle {
+		color: #B22222;
+		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+		font-size: 20px;
+		text-align: center;
+	}
+	#mainH {
+		color: #B22222;
+		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+		text-align: center;
+		
+	}
+	label {
+		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+		color: darkslategrey;
+		font-size: 10px;
+	}
+	#web {
+    	width: 30%;
+		padding: 4px 10px;
+		margin: 8px 0;
+		box-sizing: border-box;
+    	border: 2px solid #B22222;
+    	border-radius: 4px;
+	}
+	
+	input[type=time] {
+		box-sizing: border-box;
+    	border: 2px solid #B22222;
+    	border-radius: 4px;
+	}
+	#timer{
+		display:block;
+		width:60px;
+		margin:7px 10px 3px 3px;
+	}
+	#add {
+		background-color: #B22222;
+		border: 2px solid black;
+		color: white;
+		padding: 10px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 14px;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 20px;
+	}
+
+	
+</style>
 <!--	<script src="setting.js"></script>-->
     
 <!--
@@ -34,11 +86,11 @@
 	<div id = "week">
       <label><input type = "checkbox" name="check" id="0">Sunday</label>
       <label><input type = "checkbox" name="check" id="1">Monday</label>
-      <label><input type = "checkbox" name="check" id="2">Tuesday</label> 
+      <label><input type = "checkbox" name="check" id="2">Tuesday</label>
       <label><input type = "checkbox" name="check" id="3">Wednesday</label>
-      <label><input type = "checkbox" name="check" id="4">Thursday</label> 
-      <label><input type = "checkbox" name="check" id="5">Friday</label> 
-      <label><input type = "checkbox" name="check" id="6">Saturday</label> 
+      <label><input type = "checkbox" name="check" id="4">Thursday</label>
+      <label><input type = "checkbox" name="check" id="5">Friday</label>
+      <label><input type = "checkbox" name="check" id="6">Saturday</label>
     </div>
 	  
 	<br/>
@@ -49,7 +101,7 @@
 	<div id="but" style="text-align:center;">
 		<input type="button" onclick="" id="add" value="Add">
 	</div>
-	  
+	  <p id="message"></p>
     <table id = "filters">
       
     </table>
@@ -57,59 +109,7 @@
     
 </body>
 	
-<style>
-	#subtitle {
-		color: #B22222;
-		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-		font-size: 20px;
-		text-align: center;
-	}
-	#mainH {
-		color: #B22222;
-		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-		text-align: center;
-		
-	}
-	label {    
-		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-		color: darkslategrey;
-		font-size: 10px;
-	}
-	#web {
-    	width: 30%;
-		padding: 4px 10px;
-		margin: 8px 0;
-		box-sizing: border-box;
-    	border: 2px solid #B22222;
-    	border-radius: 4px;		
-	}
-	
-	input[type=time] {
-		box-sizing: border-box;
-    	border: 2px solid #B22222;
-    	border-radius: 4px;		
-	}
-	#timer{
-		display:block;
-		width:60px;
-		margin:7px 10px 3px 3px;
-	}
-	#add {
-		background-color: #B22222;
-		border: 2px solid black;
-		color: white;
-		padding: 10px 20px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 14px;
-		margin: 4px 2px;
-		cursor: pointer;
-		border-radius: 20px;
-	}
 
-	
-</style>
 			<script src="setting.js"></script>
   
 
