@@ -2,40 +2,115 @@
 <html>
   <head>
     <title>Settings</title>
+	  
+<!--	<script src="setting.js"></script>-->
     
+<!--
     <script>
 
     document.addEventListener('DOMContentLoaded', function() {
       let dis = document.getElementWithId('filters');
       
-    }
+    });
       
     </script>
+-->
     
   </head>
   
-  <body>
-    <h1>Settings</h1>
-
+  <body style="background-color: powderblue;">
+    <h1 id="mainH">Settings</h1>
+	<br/>
+	
+	   
+	<h1 id="subtitle">Choose the website you want to block. Select days and times.</h1>
+	  
+	<br/>
     
-    <div id = "week">
-      <input type = "checkbox"> <p>Sunday</p>
-      <input type = "checkbox"> <p>Monday</p>
-      <input type = "checkbox"> <p>Tuesday</p>
-      <input type = "checkbox"> <p>Wednesday</p>
-      <input type = "checkbox"> <p>Thursday</p>
-      <input type = "checkbox"> <p>Friday</p>
-      <input type = "checkbox"> <p>Saturday</p>
+    <input placeholder = "type websites" id="web">
+	<br/>
+	<br/>
+	  
+	<div id = "week">
+      <label><input type = "checkbox" name="check" id="Sunday">Sunday</label>
+      <label><input type = "checkbox" name="check" id="Monday">Monday</label>
+      <label><input type = "checkbox" name="check" id="Tuesday">Tuesday</label> 
+      <label><input type = "checkbox" name="check" id="Wednesday">Wednesday</label>
+      <label><input type = "checkbox" name="check" id="Thursday">Thursday</label> 
+      <label><input type = "checkbox" name="check" id="Friday">Friday</label> 
+      <label><input type = "checkbox" name="check" id="Saturday">Saturday</label> 
     </div>
-    
-    <input placeholder = "type websites">
-    
+	  
+	<br/>
+	<label id="timer">Starting Time<input type="time" id="starting"></label>
+    <label id="timer">End Time<input type="time" id="ending"></label>
+	<br/>
+	
+	<div id="but" style="text-align:center;">
+		<input type="button" onclick="" id="add" value="Add">
+	</div>
+	  
     <table id = "filters">
       
     </table>
     
     
-  </body>
+</body>
+	
+<style>
+	#subtitle {
+		color: #B22222;
+		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+		font-size: 20px;
+		text-align: center;
+	}
+	#mainH {
+		color: #B22222;
+		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+		text-align: center;
+		
+	}
+	label {    
+		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+		color: darkslategrey;
+		font-size: 10px;
+	}
+	#web {
+    	width: 30%;
+		padding: 4px 10px;
+		margin: 8px 0;
+		box-sizing: border-box;
+    	border: 2px solid #B22222;
+    	border-radius: 4px;		
+	}
+	
+	input[type=time] {
+		box-sizing: border-box;
+    	border: 2px solid #B22222;
+    	border-radius: 4px;		
+	}
+	#timer{
+		display:block;
+		width:60px;
+		margin:7px 10px 3px 3px;
+	}
+	#add {
+		background-color: #B22222;
+		border: 2px solid black;
+		color: white;
+		padding: 10px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 14px;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 20px;
+	}
+
+	
+</style>
+			<script src="setting.js"></script>
   
 
   
