@@ -21,8 +21,8 @@
   "permissions" : [
     "tabs",
     "webRequest",
-    "*://*.google.com/",
-    "webRequestBlocking"
+    "webRequestBlocking",
+    "<all_urls>"
     ]
   //"storage": {
   //  "managed_schema": "schema.json"

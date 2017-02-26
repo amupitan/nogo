@@ -22,35 +22,49 @@
 // });
 
 
-var blockedurls = 1/*TODO: Kern import the blocked urls as an array and store it in htis variabler*/;
-var websites = {
-  "facebook.com" : {
-    monday : []
-  },
-  web2 : {
-    monday : [],
-    tuesday : []
-  }
-};
-// var times = {
+// var blockedurls = 1/*TODO: Kern import the blocked urls as an array and store it in htis variabler*/;
+// var websites = {
 //   "facebook.com" : {
-//     "monday" : [{"12:00", "1:00"}, {"4:00pm", "6:00"}]
+//     monday : []
 //   },
-// }
-console.log("boo");
+//   web2 : {
+//     monday : [],
+//     tuesday : []
+//   }
+// };
+
+var info = {
+  websites : [
+    "https://twitter.com/*",
+    "https://www.facebook.com/*" //TODO parse through this to get website
+  ],
+  times : [
+    ["2:00", "4:00"],
+    ["4:00", "8:00"]
+  ],
+  days: [
+    ["Sunday", "Monday", "Tuesday"],
+    ["Wednesday", "Thursday", "Friday"]
+  ]
+};
+
+function redirect(requestDetails) {
+  console.log("Redirecting: " + requestDetails.url);
+  return {
+    redirectUrl: "https://38.media.tumblr.com/tumblr_ldbj01lZiP1qe0eclo1_500.gif"
+  };
+}
+
 chrome.webRequest.onBeforeRequest.addListener(
   (details) => {
-    console.log("Gotem");
-    Object.getOwnPropertyNames(websites).forEach((url, idx, array) => {
-      if (details.url.includes(url)){ /*TODO: change logic*/
-        console.log("Gotem");
+      // if (details.url.includes(url)){ /*TODO: change logic*/
+       // alert("Gotem2");
         return {
-          cancel : true,
-          redirectUrl: "www.google.com", /*Send the person to custom page*/
+          //cancel : true,
+          redirectUrl: "https://www.google.com", /*Send the person to custom page*/
         };
-      }
-    });
+      // }
   },
-  {urls: ["<all_urls>", "https://facebook.com/*"]},
+  {urls: info.websites},
   ["blocking"]
   );
