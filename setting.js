@@ -50,9 +50,10 @@ class doIt{
 		console.log(this.times[1]);
 	}
 }
-var dd = new doIt();
-
-let a = document.getElementById("add");
-a.onclick=(function(){
-	return dd.nogo();
-})
+window.onload = () => {
+    var dd = new doIt();
+    let a = document.getElementById("add");
+    a.onclick=(function(){
+        return dd.nogo();
+    })
+}
