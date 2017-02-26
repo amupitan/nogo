@@ -1,3 +1,5 @@
+
+
 function milTime() {
     var num1 = document.getElementById("starting").value;
 	var num2 = document.getElementById("ending").value;
@@ -81,6 +83,8 @@ window.onload = () => {
 		var x = JSON.stringify(site);
 		//console.log(x);
 		chrome.storage.sync.set({'info': x});
+		
+		
 	});
 	
 }

@@ -11,6 +11,7 @@
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
+		background-color: powderblue; 
       }
       #status {
          avoid an excessively wide status text
@@ -19,7 +20,55 @@
         overflow: hidden;
         max-width: 400px;
       }
+	label {    
+		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+		color: darkslategrey;
+		font-size: 10px;
+	}
+	#web {
+    	width: 100%;
+		padding: 2px 10px;
+		margin: 8px 0;
+		box-sizing: border-box;
+    	border: 2px solid #B22222;
+    	border-radius: 2px;		
+	}
+	input[type=time] {
+		box-sizing: border-box;
+    	border: 2px solid #B22222;
+    	border-radius: 2px;		
+	}
+		#add {
+		background-color: #B22222;
+		border: 2px solid black;
+		color: white;
+		padding: 10px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 10px;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 20px;
+		}
+			
+		#sett {
+		background-color: #B22222;
+		border: 2px solid black;
+		color: white;
+		padding: 10px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 10px;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 20px;
+	}
+	}
+
     </style>
+	  
 
     <!--
       - JavaScript and HTML must be in separate files: see our Content Security
@@ -27,16 +76,47 @@
       -
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
      -->
-    <script src="popup.js"></script>
+	  
+	  <script src="setting.js"></script>
+	  <script src="popup.js"></script>
+	  
   </head>
-  <body>
+  <body id="body">
+	<input placeholder = "type website" id="web" required>
+	  
+	<div id = "week">
+      <label><input type = "checkbox" name="check" id="0">Sunday</label>
+	  <br/>
+      <label><input type = "checkbox" name="check" id="1">Monday</label>
+	  <br/>
+      <label><input type = "checkbox" name="check" id="2">Tuesday</label>
+	  <br/>
+      <label><input type = "checkbox" name="check" id="3">Wednesday</label>
+	  <br/>
+      <label><input type = "checkbox" name="check" id="4">Thursday</label> 
+	  <br/>
+      <label><input type = "checkbox" name="check" id="5">Friday</label> 
+	  <br/>
+      <label><input type = "checkbox" name="check" id="6">Saturday</label> 
+    </div>
       
-    <div id = "body"></div>
-          <label id="timer">Starting Time<input type="time" id="starting"></label>
+    <div id = "bod"></div>
+    <label id="timer">Starting Time<input type="time" id="starting"></label>
     <label id="timer">End Time<input type="time" id="ending"></label>
     <br/>
-      <div id="status"></div>
+     <div id="status"></div>
+	  <br/>
+	 <div id="but" style="text-align:center;">
+		<input type="button" onclick="" id="add" value="Add">
+	</div>
+<!--	<br/>-->
+<!--	<div id="but1" style="text-align:center;">-->
+<!--		<input  onclick="" type="button"  id="sett" value="Settings">-->
+<!--	</div>-->
 
   </body>
+
+	
+
 </html>
 
