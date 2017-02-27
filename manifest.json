@@ -3,7 +3,7 @@
   "name": "No-Go",
   "version": "1.0.0",
 
-  "description": "A plain text description",
+  "description": "Block unproductive websites at certain times",
 
   "browser_action": {
     "default_icon":{
@@ -12,6 +12,10 @@
     },
     "default_title": "NoGo",
     "default_popup": "popup.html"
+  },
+  
+  "icons": {
+          "128": "icon.png"
   },
   
   "background": {
