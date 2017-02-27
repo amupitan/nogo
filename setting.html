@@ -1,60 +1,65 @@
-<!--DOCTYPE html -->
+<!DOCTYPE html>
 <html>
   <head>
     <title>Settings</title>
 	  <style>
-	#subtitle {
-		color: #B22222;
-		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-		font-size: 20px;
-		text-align: center;
-	}
-	#mainH {
-		color: #B22222;
-		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-		text-align: center;
-		
-	}
-	label {
-		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-		color: darkslategrey;
-		font-size: 10px;
-	}
-	#web {
-    	width: 30%;
-		padding: 4px 10px;
-		margin: 8px 0;
-		box-sizing: border-box;
-    	border: 2px solid #B22222;
-    	border-radius: 4px;
-	}
-	
-	input[type=time] {
-		box-sizing: border-box;
-    	border: 2px solid #B22222;
-    	border-radius: 4px;
-	}
-	#timer{
-		display:block;
-		width:60px;
-		margin:7px 10px 3px 3px;
-	}
-	#add {
-		background-color: #B22222;
-		border: 2px solid black;
-		color: white;
-		padding: 10px 20px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 14px;
-		margin: 4px 2px;
-		cursor: pointer;
-		border-radius: 20px;
-	}
-
-	
-</style>
+  	  table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      }
+      th, td {
+          padding: 15px;
+      }
+    	#subtitle {
+    		color: #B22222;
+    		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+    		font-size: 20px;
+    		text-align: center;
+    	}
+    	#mainH {
+    		color: #B22222;
+    		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+    		text-align: center;
+    		
+    	}
+    	label {
+    		font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+    		color: darkslategrey;
+    		font-size: 10px;
+    	}
+    	#web {
+        	width: 30%;
+    		padding: 4px 10px;
+    		margin: 8px 0;
+    		box-sizing: border-box;
+        	border: 2px solid #B22222;
+        	border-radius: 4px;
+    	}
+    	
+    	input[type=time] {
+    		box-sizing: border-box;
+        	border: 2px solid #B22222;
+        	border-radius: 4px;
+    	}
+    	#timer{
+    		display:block;
+    		width:60px;
+    		margin:7px 10px 3px 3px;
+    	}
+    	#add {
+    		background-color: #B22222;
+    		border: 2px solid black;
+    		color: white;
+    		padding: 10px 20px;
+    		text-align: center;
+    		text-decoration: none;
+    		display: inline-block;
+    		font-size: 14px;
+    		margin: 4px 2px;
+    		cursor: pointer;
+    		border-radius: 20px;
+    	}
+    </style>
 <!--	<script src="setting.js"></script>-->
     
 <!--
@@ -69,17 +74,14 @@
 -->
     
   </head>
-  
   <body style="background-color: powderblue;">
     <h1 id="mainH">Settings</h1>
   	<br/>
-  	
   	<h1>No-Go</h1>
   	<h2>Website Blocker</h2>
   	<h3 id="subtitle">Choose the website you want to block. Select days and times.</h3>
   	  
   	<br/>
-      
       <input placeholder = "type website" id="web" required>
   	<br/>
   	<br/>
@@ -98,16 +100,21 @@
   	<label id="timer">Starting Time<input name="time1" type="time" id="starting"></label>
       <label id="timer">End Time<input name="time2" type="time" id="ending"></label>
   	<br/>
-  	
-  	<div id="but" style="text-align:center;">
+
+    <p id="message"></p>
+    <div id="but" style="text-align:center;">
   		<input type="button" onclick="" id="add" value="Add">
   	</div>
   	
-    <p id="message"></p>
-    <table id = "filters"></table>
-    
     <!--Currently blocked websites-->
-    <ul id="blocked-list"></ul>
+    <table id = "blocked-list">
+      <tr>
+        <th>Website</th>
+        <th>Times</th>
+        <th>Delete</th>
+      </tr>
+    </table>
+    <br />
     <button id="clear" >Clear all blocked websites</button>
     <script src="setting.js"></script>
   </body>

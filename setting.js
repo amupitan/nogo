@@ -1,4 +1,10 @@
-
+let delWebsite = (webObject, webData, htmlData) => {
+  return function(){
+    delete webObject[webData];
+    chrome.storage.sync.set({'info': webObject});
+    htmlData.remove();
+  };
+};
 
 function milTime() {
     var num1 = document.getElementById("starting").value;
@@ -63,48 +69,80 @@ window.onload = () => {
 		} );
 	
 	document.getElementById("add").onclick=(function(){
-		if(milTime()){
-			return;
-		}
+		if(milTime()) return;
 		var b = document.getElementById("web").value;
 		if(site[b] === undefined){
 			site[b] = [ [], [], [], [], [], [], [] ];
 			addWeb(site[b]);
-			console.log(site);
-		}
-		else{
-			
+		}else{
 			editWeb(site[b]);
-			console.log(site);
 		}
 		/*Display newly added blocked website*/
-		// [...Object.getOwnPropertyNames(site)].forEach((val, idx, arr) => {
-      let txt = document.createTextNode(b);
-      let web = document.createElement('li');
-      web.appendChild(txt);
-      document.getElementById('blocked-list').appendChild(web);
-    // });
+    /*Create Row*/
+    let tr = document.createElement('tr');
+    
+    /*Website name column*/
+    let webName = document.createElement('td');
+    let txt = document.createTextNode(b);
+    webName.appendChild(txt);
+    
+    /*TODO: Days/time website is blocked*/
+    
+    /*Delete website Column*/
+    let delCol = document.createElement('td');
+    let del = document.createElement('button');
+    del.innerHTML = "Delete"; /*Use a glyphicon vs a button*/
+    del.onclick = delWebsite(site, b, tr);
+    delCol.appendChild(del);
+    
+    tr.appendChild(webName);
+    tr.appendChild(document.createElement('td')); /*TODO: Add time data*/
+    tr.appendChild(delCol);
+    
+    document.getElementById('blocked-list').appendChild(tr);
+
 		chrome.storage.sync.set({'info': site});
 		document.getElementById('message').innerHTML = `The page: ${b} has been added to the block list`;
+		
+		/*Clear form*/
+		document.getElementById("web").value = "";
+		document.getElementById("starting").value = "";
+		document.getElementById("ending").value = "";
 
 	});
 	
 	document.getElementById('clear').onclick = () => {
+	  document.getElementById('blocked-list').innerHTML = "";
+	  document.getElementById('message').innerHTML = "";
 	  chrome.storage.sync.clear();
 	};
 	
 	/*Display currently blocked websites*/
-  var websites = {};
+  var websites = {}; /*TODO: This object is already refernced by site, use that instead*/
   chrome.storage.sync.get("info",function(obj){
     if (obj.info){
       websites = obj.info;
     }
 
   [...Object.getOwnPropertyNames(websites)].forEach((val, idx, arr) => {
+    let tr = document.createElement('tr');
+    let webCol = document.createElement('td');
     let txt = document.createTextNode(val);
-    let web = document.createElement('li');
-    web.appendChild(txt);
-    document.getElementById('blocked-list').appendChild(web);
+    webCol.appendChild(txt);
+    
+    /*TODO: Add days/time column*/
+    
+    let delCol = document.createElement('td');
+    let delButton = document.createElement('button'); /*Use glyphicon vs button tag*/
+    delButton.innerHTML = "Delete";
+    delButton.onclick = delWebsite(websites, val, tr);
+    delCol.appendChild(delButton);
+    
+    tr.appendChild(webCol);
+    tr.appendChild(document.createElement('td')); /*TODO: Create time column*/
+    tr.appendChild(delCol);
+    
+    document.getElementById('blocked-list').appendChild(tr);
   });
 });
 	
