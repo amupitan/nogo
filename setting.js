@@ -54,7 +54,6 @@ var hostGetter = url => {
 
 window.onload = () => {
 	var webName = document.getElementById("web").value;
-	let a = document.getElementById("add");
 	var site = {};
 	chrome.storage.sync.get("info",function(obj){
 	  console.log(obj);
@@ -63,7 +62,7 @@ window.onload = () => {
     if (site === null) site = {};
 		} );
 	
-	a.onclick=(function(){
+	document.getElementById("add").onclick=(function(){
 		if(milTime()){
 			return;
 		}
@@ -78,10 +77,36 @@ window.onload = () => {
 			editWeb(site[b]);
 			console.log(site);
 		}
+		/*Display newly added blocked website*/
+		// [...Object.getOwnPropertyNames(site)].forEach((val, idx, arr) => {
+      let txt = document.createTextNode(b);
+      let web = document.createElement('li');
+      web.appendChild(txt);
+      document.getElementById('blocked-list').appendChild(web);
+    // });
 		chrome.storage.sync.set({'info': site});
 		document.getElementById('message').innerHTML = `The page: ${b} has been added to the block list`;
 
 	});
+	
+	document.getElementById('clear').onclick = () => {
+	  chrome.storage.sync.clear();
+	};
+	
+	/*Display currently blocked websites*/
+  var websites = {};
+  chrome.storage.sync.get("info",function(obj){
+    if (obj.info){
+      websites = obj.info;
+    }
+
+  [...Object.getOwnPropertyNames(websites)].forEach((val, idx, arr) => {
+    let txt = document.createTextNode(val);
+    let web = document.createElement('li');
+    web.appendChild(txt);
+    document.getElementById('blocked-list').appendChild(web);
+  });
+});
 	
 };
 

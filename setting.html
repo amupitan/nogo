@@ -72,46 +72,43 @@
   
   <body style="background-color: powderblue;">
     <h1 id="mainH">Settings</h1>
-	<br/>
-	
-	   
-	<h1 id="subtitle">Choose the website you want to block. Select days and times.</h1>
-	  
-	<br/>
-    
-    <input placeholder = "type website" id="web" required>
-	<br/>
-	<br/>
-	  
-	<div id = "week">
-      <label><input type = "checkbox" name="check" id="0">Sunday</label>
-      <label><input type = "checkbox" name="check" id="1">Monday</label>
-      <label><input type = "checkbox" name="check" id="2">Tuesday</label>
-      <label><input type = "checkbox" name="check" id="3">Wednesday</label>
-      <label><input type = "checkbox" name="check" id="4">Thursday</label>
-      <label><input type = "checkbox" name="check" id="5">Friday</label>
-      <label><input type = "checkbox" name="check" id="6">Saturday</label>
-    </div>
-	  
-	<br/>
-	<label id="timer">Starting Time<input name="time1" type="time" id="starting"></label>
-    <label id="timer">End Time<input name="time2" type="time" id="ending"></label>
-	<br/>
-	
-	<div id="but" style="text-align:center;">
-		<input type="button" onclick="" id="add" value="Add">
-	</div>
-	  <p id="message"></p>
-    <table id = "filters">
+  	<br/>
+  	
+  	<h1>No-Go</h1>
+  	<h2>Website Blocker</h2>
+  	<h3 id="subtitle">Choose the website you want to block. Select days and times.</h3>
+  	  
+  	<br/>
       
-    </table>
+      <input placeholder = "type website" id="web" required>
+  	<br/>
+  	<br/>
+  	  
+  	<div id = "week">
+        <label><input type = "checkbox" name="check" id="0">Sunday</label>
+        <label><input type = "checkbox" name="check" id="1">Monday</label>
+        <label><input type = "checkbox" name="check" id="2">Tuesday</label>
+        <label><input type = "checkbox" name="check" id="3">Wednesday</label>
+        <label><input type = "checkbox" name="check" id="4">Thursday</label>
+        <label><input type = "checkbox" name="check" id="5">Friday</label>
+        <label><input type = "checkbox" name="check" id="6">Saturday</label>
+      </div>
+  	  
+  	<br/>
+  	<label id="timer">Starting Time<input name="time1" type="time" id="starting"></label>
+      <label id="timer">End Time<input name="time2" type="time" id="ending"></label>
+  	<br/>
+  	
+  	<div id="but" style="text-align:center;">
+  		<input type="button" onclick="" id="add" value="Add">
+  	</div>
+  	
+    <p id="message"></p>
+    <table id = "filters"></table>
     
-    
-</body>
-	
-
-			<script src="setting.js"></script>
-  
-
-  
+    <!--Currently blocked websites-->
+    <ul id="blocked-list"></ul>
+    <button id="clear" >Clear all blocked websites</button>
+    <script src="setting.js"></script>
+  </body>
 </html>
