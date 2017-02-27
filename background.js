@@ -13,7 +13,6 @@
 var websites = {};
 var websiteNames = [];
 chrome.storage.sync.get("info",function(obj){
-  console.log(obj);
   if (obj.info)
     websites = obj.info;
   websiteNames = [...Object.getOwnPropertyNames(websites)].map((url) => {
@@ -34,6 +33,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   (details) => {
         
         let date = new Date();
+        if (websites[hostGetter(details.url)] === undefined) return;
         for(let val of websites[hostGetter(details.url)][date.getDay()]){
           let startTime = parseInt(val[0].split(':').join(''));
           let endTime = parseInt(val[1].split(':').join(''));
