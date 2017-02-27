@@ -74,40 +74,40 @@ window.onload = () => {
 		if(site[b] === undefined){
 			site[b] = [ [], [], [], [], [], [], [] ];
 			addWeb(site[b]);
+			/*Display newly added blocked website*/
+      /*Create Row*/
+      let tr = document.createElement('tr');
+      
+      /*Website name column*/
+      let webName = document.createElement('td');
+      let txt = document.createTextNode(b);
+      webName.appendChild(txt);
+      
+      /*TODO: Days/time website is blocked*/
+      
+      /*Delete website Column*/
+      let delCol = document.createElement('td');
+      let del = document.createElement('button');
+      del.innerHTML = "Delete"; /*Use a glyphicon vs a button*/
+      del.onclick = delWebsite(site, b, tr);
+      delCol.appendChild(del);
+      
+      tr.appendChild(webName);
+      tr.appendChild(document.createElement('td')); /*TODO: Add time data*/
+      tr.appendChild(delCol);
+      
+      document.getElementById('blocked-list').appendChild(tr);
+  
+  		chrome.storage.sync.set({'info': site});
+  		document.getElementById('message').innerHTML = `The page: ${b} has been added to the block list`;
+  		
+  		/*Clear form*/
+  		document.getElementById("web").value = "";
+  		document.getElementById("starting").value = "";
+  		document.getElementById("ending").value = "";
 		}else{
 			editWeb(site[b]);
 		}
-		/*Display newly added blocked website*/
-    /*Create Row*/
-    let tr = document.createElement('tr');
-    
-    /*Website name column*/
-    let webName = document.createElement('td');
-    let txt = document.createTextNode(b);
-    webName.appendChild(txt);
-    
-    /*TODO: Days/time website is blocked*/
-    
-    /*Delete website Column*/
-    let delCol = document.createElement('td');
-    let del = document.createElement('button');
-    del.innerHTML = "Delete"; /*Use a glyphicon vs a button*/
-    del.onclick = delWebsite(site, b, tr);
-    delCol.appendChild(del);
-    
-    tr.appendChild(webName);
-    tr.appendChild(document.createElement('td')); /*TODO: Add time data*/
-    tr.appendChild(delCol);
-    
-    document.getElementById('blocked-list').appendChild(tr);
-
-		chrome.storage.sync.set({'info': site});
-		document.getElementById('message').innerHTML = `The page: ${b} has been added to the block list`;
-		
-		/*Clear form*/
-		document.getElementById("web").value = "";
-		document.getElementById("starting").value = "";
-		document.getElementById("ending").value = "";
 
 	});
 	
